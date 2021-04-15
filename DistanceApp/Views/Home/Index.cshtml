@@ -1,0 +1,75 @@
+﻿@model Measurement
+
+@{ Layout = null; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Distance</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <style>
+        td.meas {
+            text-align: right;
+            padding-right: 3px;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid col-xs-7 col-sm-5 col-md-4 col-lg-3 ">
+        <h3>Distance: </h3>
+
+        <form asp-action="Index" method="post">
+            <div class="row">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend col-6">
+                        <input style="text-align:right" value="@Model.entered" name="entered" type="text" class="form-control" />
+                    </div>
+                    <select class="custom-select col form-control" name="unit" style="width:auto">
+                        <option value="@units.inches" selected="@(Model.unit == units.inches)"> in </option>
+                        <option value="@units.feet" selected="@(Model.unit == units.feet)"> ft </option>
+                        <option value="@units.centimeters" selected="@(Model.unit == units.centimeters)"> cm </option>
+                        <option value="@units.meters" selected="@(Model.unit == units.meters)"> m </option>
+                    </select>
+                    <div class="col input-group-append">
+                        <button class="btn btn-info btn-sm" type="submit">calc</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <table class="table table-striped">
+            <tbody>
+                <tr style="font-weight: @(Model.unit == units.inches && Model.entered is not null ? "bold" : "normal");">
+                    <td class="meas">@($"{Model.inches:#,###.#}")</td>
+                    <td> inches</td>
+                </tr>
+                <tr style="font-weight: @(Model.unit == units.feet && Model.entered is not null ? "bold" : "normal");">
+                    <td class="meas">@($"{Model.feet:#,###.#}")</td>
+                    <td> feet</td>
+                </tr>
+                <tr style="font-weight: @(Model.unit == units.centimeters && Model.entered is not null ? "bold" : "normal");">
+                    <td class="meas">@($"{Model.centimeters:#,###.#}")</td>
+                    <td> centimeters</td>
+                </tr>
+                <tr style="font-weight: @(Model.unit == units.meters && Model.entered is not null ? "bold" : "normal");">
+                    <td class="meas">@($"{Model.meters:#,###.#}")</td>
+                    <td> meters</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    @*<div>
+        <div class="bg-info p-1 col-1 d-block d-sm-none">xs</div>
+        <div class="bg-info p-1 col-1 d-none d-sm-block d-md-none">sm</div>
+        <div class="bg-info p-1 col-1 d-none d-md-block d-lg-none">md</div>
+        <div class="bg-info p-1 col-1 d-none d-lg-block d-xl-none">lg</div>
+        <div class="bg-info p-1 col-1 d-none d-xl-block">xl</div>
+    </div>*@
+
+</body>
+</html>

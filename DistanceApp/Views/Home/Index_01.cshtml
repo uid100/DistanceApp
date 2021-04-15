@@ -1,0 +1,11 @@
+﻿@model Measurement
+
+<h3>Distance:</h3>
+
+<form asp-action="Index" method="post">
+    <p>in: <input type="radio" name="unit" value=@units.inches />      <input name=inches value="@Model.inches" /></p>
+    <p>ft: <input type="radio" name="unit" value=@units.feet />        <input name=feet value="@Model.feet" /></p>
+    <p>cm: <input type="radio" name="unit" value=@units.centimeters /> <input name=centimeters value="@Model.centimeters" /></p>
+    <p> m: <input type="radio" name="unit" value=@units.meters />      <input name=meters value="@Model.meters" /></p>
+    <button type="submit">go</button>
+</form>
