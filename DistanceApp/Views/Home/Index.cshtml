@@ -31,8 +31,11 @@
                     <select class="custom-select col form-control" name="unit" style="width:auto">
                         <option value="@units.inches" selected="@(Model.unit == units.inches)"> in </option>
                         <option value="@units.feet" selected="@(Model.unit == units.feet)"> ft </option>
+                        <option value="@units.miles" selected="@(Model.unit == units.miles)"> mi </option>
+                        <option value="@units.nauticalMiles" selected="@(Model.unit == units.nauticalMiles)"> Nm </option>
                         <option value="@units.centimeters" selected="@(Model.unit == units.centimeters)"> cm </option>
                         <option value="@units.meters" selected="@(Model.unit == units.meters)"> m </option>
+                        <option value="@units.kilometers" selected="@(Model.unit == units.kilometers)"> km </option>
                     </select>
                     <div class="col input-group-append">
                         <button class="btn btn-info btn-sm" type="submit">calc</button>
@@ -51,6 +54,14 @@
                     <td class="meas">@($"{Model.feet:#,###.#}")</td>
                     <td> feet</td>
                 </tr>
+                <tr style="font-weight: @(Model.unit == units.miles && Model.entered is not null ? "bold" : "normal");">
+                    <td class="meas">@($"{Model.miles:#,###.#}")</td>
+                    <td> miles</td>
+                </tr>
+                <tr style="font-weight: @(Model.unit == units.nauticalMiles && Model.entered is not null ? "bold" : "normal");">
+                    <td class="meas">@($"{Model.nautMiles:#,###.#}")</td>
+                    <td> naut. miles</td>
+                </tr>
                 <tr style="font-weight: @(Model.unit == units.centimeters && Model.entered is not null ? "bold" : "normal");">
                     <td class="meas">@($"{Model.centimeters:#,###.#}")</td>
                     <td> centimeters</td>
@@ -58,6 +69,10 @@
                 <tr style="font-weight: @(Model.unit == units.meters && Model.entered is not null ? "bold" : "normal");">
                     <td class="meas">@($"{Model.meters:#,###.#}")</td>
                     <td> meters</td>
+                </tr>
+                <tr style="font-weight: @(Model.unit == units.kilometers && Model.entered is not null ? "bold" : "normal");">
+                    <td class="meas">@($"{Model.kilometers:#,###.#}")</td>
+                    <td> kilometers</td>
                 </tr>
             </tbody>
         </table>
